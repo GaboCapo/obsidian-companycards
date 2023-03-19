@@ -37,7 +37,15 @@ The plugin reads your companies folder, which can be changed in the settings, to
 1. Find the "Companies" tab.
 1. Change the value of "Companies Folder Location" to an existing folder.
 
+
+
+TODO Video
+
 https://user-images.githubusercontent.com/9114994/209376300-5d643e65-0f4d-41b8-be7f-565f3a05347c.mov
+
+
+
+
 
 ### Creating a New Company
 1. Click the "Companies" factory icon in the left sidebar. The Companies view should be opened in the right sidebar.
@@ -59,6 +67,9 @@ https://user-images.githubusercontent.com/9114994/209376300-5d643e65-0f4d-41b8-b
 ```
 Feel free to add more rows, and leave existing ones empty. **Do not rename** existing keys, as they can be used by the plugin.
 
+
+TODO Video
+
 https://user-images.githubusercontent.com/9114994/209380539-7fe10d19-5d73-4435-a0de-f2c5805e0771.mov
 
 ### Searching for Companies
@@ -66,6 +77,9 @@ You can use different sorting options to find the required companies:
 - Use sorting by founding to find companies with the nearest founding day.
 - Use sorting by last contact date to find companies that you haven't talked to in a long time.
 - Use sorting by name to find a specific company.
+
+
+TODO Video
 
 https://user-images.githubusercontent.com/9114994/209383369-d7fc0a42-d1df-4980-93e0-46a8541b00b5.mov
 
