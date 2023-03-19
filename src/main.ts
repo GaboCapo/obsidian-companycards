@@ -13,7 +13,7 @@ export default class CompaniesPlugin extends Plugin {
 			(leaf) => new CompaniesView(leaf, this)
 		);
 
-		this.addRibbonIcon('company', 'Companies', () => {
+		this.addRibbonIcon('factory', 'Companies', () => {
 			this.activateSidebarView();
 		});
 

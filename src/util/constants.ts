@@ -1,7 +1,7 @@
 export const COMPANIES_VIEW_CONFIG = {
 	type: "company-view",
 	name: "Company",
-	icon: "company",
+	icon: "factory",
 };
 
 export enum Sort {
