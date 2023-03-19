@@ -1,10 +1,10 @@
 import { TFile } from "obsidian";
 
-export type Contact = {
+export type Company = {
   name: string;
   lastName: string;
   phone: string;
   file: TFile;
   lastContact?: Date;
-  birthday?: Date;
+  founding?: Date;
 }

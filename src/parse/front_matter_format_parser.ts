@@ -1,15 +1,15 @@
 import { MetadataCache, TFile } from "obsidian";
-import { Contact } from "./contact";
+import { Company } from "./company";
 import { parseDate } from "./parse_utils";
 
-export function isContactFile(
+export function isCompanyFile(
   file: TFile, metadataCache: MetadataCache
 ): boolean {
   const type = metadataCache.getFileCache(file)?.frontmatter?.type;
-  return type == 'contact';
+  return type == 'company';
 }
 
-export async function parseContactData(file: TFile, metadataCache: MetadataCache): Promise<Contact | null> {
+export async function parseCompanyData(file: TFile, metadataCache: MetadataCache): Promise<Company | null> {
   const frontmatter = metadataCache.getFileCache(file)?.frontmatter;
   if (frontmatter == null) {
     return null;
@@ -20,7 +20,7 @@ export async function parseContactData(file: TFile, metadataCache: MetadataCache
     lastName: frontmatter['name']['last'],
     phone: frontmatter['phone'],
     lastContact: parseDate(frontmatter['last_chat']),
-    birthday: parseDate(frontmatter['birthday']),
+    founding: parseDate(frontmatter['founding']),
     file: file,
   }
 }

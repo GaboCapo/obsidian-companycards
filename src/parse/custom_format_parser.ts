@@ -1,18 +1,18 @@
 import { TFile, Vault } from "obsidian";
-import { Contact } from "./contact";
+import { Company } from "./company";
 import { parseDate } from "./parse_utils";
 
-export async function isContactFile(
+export async function isCompanyFile(
   file: TFile, vault: Vault
 ): Promise<boolean> {
   const content = await vault.cachedRead(file);
-  return (content.match(/\/---contact---\//g) || []).length === 2;
+  return (content.match(/\/---company---\//g) || []).length === 2;
 }
 
-export async function parseContactData(file: TFile, vault: Vault): Promise<Contact | null> {
+export async function parseCompanyData(file: TFile, vault: Vault): Promise<Company | null> {
   const fileContents = await vault.cachedRead(file);
   const regexpNames = /^\|(?<key>.+)\|(?<value>.+)\|(\s)*$/gm;
-  const contactsDict: { [key: string]: string } = {};
+  const companiesDict: { [key: string]: string } = {};
   for (const match of fileContents.matchAll(regexpNames)) {
     if (!match.groups) {
       continue;
@@ -22,15 +22,15 @@ export async function parseContactData(file: TFile, vault: Vault): Promise<Conta
     if (key === "" || value === "") {
       continue;
     }
-    contactsDict[key] = value;
+    companiesDict[key] = value;
   }
 
   return {
-    name: contactsDict['Name'],
-    lastName: contactsDict['Last Name'],
-    phone: contactsDict['Phone'],
-    lastContact: parseDate(contactsDict['Last chat']),
-    birthday: parseDate(contactsDict['Birthday']),
+    name: companiesDict['Name'],
+    lastName: companiesDict['Last Name'],
+    phone: companiesDict['Phone'],
+    lastContact: parseDate(companiesDict['Last chat']),
+    founding: parseDate(companiesDict['Founding']),
     file: file,
   }
 }

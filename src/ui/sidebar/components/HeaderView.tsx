@@ -5,7 +5,7 @@ import { Sort } from "src/util/constants";
 type HeaderProps = {
 	onSortChange: React.Dispatch<React.SetStateAction<Sort>>;
 	sort: Sort;
-	onCreateContact: () => void;
+	onCreateCompany: () => void;
 };
 
 export const HeaderView = (props: HeaderProps) => {
@@ -22,8 +22,8 @@ export const HeaderView = (props: HeaderProps) => {
 					<div
 						id="create-btn"
 						className="clickable-icon nav-action-button"
-						aria-label="Create New Contact"
-						onClick={props.onCreateContact}
+						aria-label="Create New Company"
+						onClick={props.onCreateCompany}
 					>
 						Create
 					</div>
@@ -55,11 +55,11 @@ export const HeaderView = (props: HeaderProps) => {
 						data-icon="cake"
 						className={
 							"clickable-icon nav-action-button " +
-							(props.sort === Sort.BIRTHDAY && "is-active")
+							(props.sort === Sort.FOUNDING && "is-active")
 						}
-						aria-label="Sort By Birthday"
+						aria-label="Sort By Founding"
 						ref={(element) => (buttons.current[3] = element)}
-						onClick={() => props.onSortChange(Sort.BIRTHDAY)}
+						onClick={() => props.onSortChange(Sort.FOUNDING)}
 					/>
 				</div>
 			</div>

@@ -1,24 +1,24 @@
 import { MetadataCache, TFile, Vault } from "obsidian";
-import { Contact } from "./contact";
-import { isContactFile as isContactFormatFile, parseContactData as parseContactFormatData } from "./custom_format_parser";
-import { isContactFile as isFrontmatterFormatFile, parseContactData as parseFrontmatterFormatData } from "./front_matter_format_parser";
+import { Company } from "./company";
+import { isCompanyFile as isCompanyFormatFile, parseCompanyData as parseCompanyFormatData } from "./custom_format_parser";
+import { isCompanyFile as isFrontmatterFormatFile, parseCompanyData as parseFrontmatterFormatData } from "./front_matter_format_parser";
 
-export async function parseContactFiles(files: TFile[], vault: Vault, metadataCache: MetadataCache) {
-  const contactsData: Contact[] = [];
+export async function parseCompanyFiles(files: TFile[], vault: Vault, metadataCache: MetadataCache) {
+  const companiesData: Company[] = [];
   for (const file of files) {
     if (isFrontmatterFormatFile(file, metadataCache)) {
-      const contact = await parseFrontmatterFormatData(file, metadataCache);
-      if (!contact) {
+      const company = await parseFrontmatterFormatData(file, metadataCache);
+      if (!company) {
         continue;
       }
-      contactsData.push(contact);
-    } else if (await isContactFormatFile(file, vault)) {
-      const contact = await parseContactFormatData(file, vault);
-      if (!contact) {
+      companiesData.push(company);
+    } else if (await isCompanyFormatFile(file, vault)) {
+      const company = await parseCompanyFormatData(file, vault);
+      if (!company) {
         continue;
       }
-      contactsData.push(contact);
+      companiesData.push(company);
     }
   }
-  return contactsData;
+  return companiesData;
 }

@@ -1,11 +1,11 @@
-export const CONTACTS_VIEW_CONFIG = {
-	type: "contacts-view",
-	name: "Contacts",
-	icon: "contact",
+export const COMPANIES_VIEW_CONFIG = {
+	type: "company-view",
+	name: "Company",
+	icon: "company",
 };
 
 export enum Sort {
 	NAME,
 	LAST_CONTACT,
-	BIRTHDAY
+	FOUNDING
 }

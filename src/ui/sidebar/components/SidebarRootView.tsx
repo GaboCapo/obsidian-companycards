@@ -1,37 +1,37 @@
 import { normalizePath, TFile, TFolder } from "obsidian";
 import * as React from "react";
 import { useApp } from "src/context/hooks";
-import { createContactFile, findContactFiles } from "src/file/file";
-import ContactsPlugin from "src/main";
-import { Contact } from "src/parse/contact";
-import { parseContactFiles } from "src/parse/parse";
+import { createCompanyFile, findCompanyFiles } from "src/file/file";
+import CompaniesPlugin from "src/main";
+import { Company } from "src/parse/company";
+import { parseCompanyFiles } from "src/parse/parse";
 import { Sort } from "src/util/constants";
-import { ContactsListView } from "./ContactsListView";
+import { CompaniesListView } from "./CompaniesListView";
 import { HeaderView } from "./HeaderView";
 
 type RootProps = {
-	plugin: ContactsPlugin;
+	plugin: CompaniesPlugin;
 };
 
 export const SidebarRootView = (props: RootProps) => {
 	const { vault, metadataCache, workspace } = useApp();
-	const [contacts, setContacts] = React.useState<Contact[]>([]);
+	const [companies, setCompanies] = React.useState<Company[]>([]);
 	const [sort, setSort] = React.useState<Sort>(Sort.LAST_CONTACT);
-	const folder = props.plugin.settings.contactsFolder;
+	const folder = props.plugin.settings.companiesFolder;
 
 	React.useEffect(() => {
-		const contactsFolder = vault.getAbstractFileByPath(
+		const companiesFolder = vault.getAbstractFileByPath(
 			normalizePath(folder)
 		) as TFolder;
 
-		if (!contactsFolder) {
-			setContacts([]);
+		if (!companiesFolder) {
+			setCompanies([]);
 		}
 
-		const contactFiles: TFile[] = findContactFiles(contactsFolder);
+		const companyFiles: TFile[] = findCompanyFiles(companiesFolder);
 
-		parseContactFiles(contactFiles, vault, metadataCache).then((contactsData) =>
-			setContacts(contactsData)
+		parseCompanyFiles(companyFiles, vault, metadataCache).then((companiesData) =>
+			setCompanies(companiesData)
 		);
 	}, []);
 
@@ -39,8 +39,8 @@ export const SidebarRootView = (props: RootProps) => {
 		<div>
 			<HeaderView
 				onSortChange={setSort}
-				onCreateContact={() =>
-					createContactFile(
+				onCreateCompany={() =>
+					createCompanyFile(
 						folder,
 						props.plugin.settings.template,
 						vault,
@@ -49,7 +49,7 @@ export const SidebarRootView = (props: RootProps) => {
 				}
 				sort={sort}
 			/>
-			<ContactsListView contacts={contacts} sort={sort} />
+			<CompaniesListView companies={companies} sort={sort} />
 		</div>
 	);
 };

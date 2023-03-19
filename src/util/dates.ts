@@ -25,16 +25,16 @@ export function diffDateToday(date: Date): number {
   return diffDays;
 }
 
-export function daysUntilBirthday(birthday: Date): number {
+export function daysUntilFounding(founding: Date): number {
   const today = new Date();
   const currentYear = today.getFullYear();
 
-  birthday.setFullYear(currentYear);
-  if (birthday < today) {
-    birthday.setFullYear(currentYear + 1);
+  founding.setFullYear(currentYear);
+  if (founding < today) {
+    founding.setFullYear(currentYear + 1);
   }
 
-  const days = (birthday.getTime() - today.getTime()) / oneDay;
+  const days = (founding.getTime() - today.getTime()) / oneDay;
 
   return Math.floor(days);
 }

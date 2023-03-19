@@ -3,7 +3,7 @@ import { join } from "path";
 import { Template } from "src/settings/settings";
 
 const customFormat =
-  `/---contact---/
+  `/---company---/
 | key       | value |
 | --------- | ----- |
 | Name      |       |
@@ -11,10 +11,10 @@ const customFormat =
 | Phone     |       |
 | Telegram  |       |
 | Linkedin  |       |
-| Birthday  |       |
+| Founding  |       |
 | Last chat |       |
 | Friends   |       |
-/---contact---/`
+/---company---/`
 
 const frontmatterFormat =
   `---
@@ -24,10 +24,10 @@ name:
 phone:
 telegram:
 linkedin:
-birthday:
+founding:
 last_chat:
 friends:
-type: contact
+type: company
 ---`
 
 export async function openFile(file: TFile, workspace: Workspace) {
@@ -35,24 +35,24 @@ export async function openFile(file: TFile, workspace: Workspace) {
   await leaf.openFile(file, { active: true });
 }
 
-export function findContactFiles(contactsFolder: TFolder) {
-  const contactFiles: TFile[] = [];
-  Vault.recurseChildren(contactsFolder, async (contactNote) => {
-    if (contactNote instanceof TFile) {
-      contactFiles.push(contactNote);
+export function findCompanyFiles(companiesFolder: TFolder) {
+  const companyFiles: TFile[] = [];
+  Vault.recurseChildren(companiesFolder, async (companyNote) => {
+    if (companyNote instanceof TFile) {
+      companyFiles.push(companyNote);
     }
   });
-  return contactFiles;
+  return companyFiles;
 }
 
-export function createContactFile(folderPath: string, template: Template, vault: Vault, workspace: Workspace) {
+export function createCompanyFile(folderPath: string, template: Template, vault: Vault, workspace: Workspace) {
   const folder = vault.getAbstractFileByPath(folderPath)
   if (!folder) {
-    new Notice(`Can not find path: '${folderPath}'. Please update "Contacts" plugin settings`);
+    new Notice(`Can not find path: '${folderPath}'. Please update "Company Card" plugin settings`);
     return;
   }
 
-  vault.create(normalizePath(join(folderPath, `Contact ${findNextFileNumber(folderPath, vault)}.md`)), getNewFileContent(template))
+  vault.create(normalizePath(join(folderPath, `Company ${findNextFileNumber(folderPath, vault)}.md`)), getNewFileContent(template))
     .then(createdFile => openFile(createdFile, workspace));
 }
 
@@ -62,12 +62,12 @@ function findNextFileNumber(folderPath: string, vault: Vault) {
   ) as TFolder;
 
   let nextNumber = 0;
-  Vault.recurseChildren(folder, (contactNote) => {
-    if (!(contactNote instanceof TFile)) {
+  Vault.recurseChildren(folder, (companyNote) => {
+    if (!(companyNote instanceof TFile)) {
       return;
     }
-    const name = contactNote.basename;
-    const regex = /Contact(?<number>\s\d+)*/g;
+    const name = companyNote.basename;
+    const regex = /Company(?<number>\s\d+)*/g;
     for (const match of name.matchAll(regex)) {
       if (!match.groups || !match.groups.number) {
         if (nextNumber === 0) {

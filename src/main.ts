@@ -1,27 +1,27 @@
 import { Plugin } from 'obsidian';
-import { ContactsView } from "src/ui/sidebar/sidebarView";
-import { CONTACTS_VIEW_CONFIG } from "src/util/constants";
-import { ContactsPluginSettings, ContactsSettingTab, DEFAULT_SETTINGS } from './settings/settings';
+import { CompaniesView } from "src/ui/sidebar/sidebarView";
+import { COMPANIES_VIEW_CONFIG } from "src/util/constants";
+import { CompaniesPluginSettings, CompaniesSettingTab, DEFAULT_SETTINGS } from './settings/settings';
 
-export default class ContactsPlugin extends Plugin {
-	settings: ContactsPluginSettings;
+export default class CompaniesPlugin extends Plugin {
+	settings: CompaniesPluginSettings;
 
 	async onload() {
 		await this.loadSettings();
 		this.registerView(
-			CONTACTS_VIEW_CONFIG.type,
-			(leaf) => new ContactsView(leaf, this)
+			COMPANIES_VIEW_CONFIG.type,
+			(leaf) => new CompaniesView(leaf, this)
 		);
 
-		this.addRibbonIcon('contact', 'Contacts', () => {
+		this.addRibbonIcon('company', 'Companies', () => {
 			this.activateSidebarView();
 		});
 
-		this.addSettingTab(new ContactsSettingTab(this.app, this));
+		this.addSettingTab(new CompaniesSettingTab(this.app, this));
 	}
 
 	onunload() {
-		this.app.workspace.detachLeavesOfType(CONTACTS_VIEW_CONFIG.type);
+		this.app.workspace.detachLeavesOfType(COMPANIES_VIEW_CONFIG.type);
 	}
 
 	async loadSettings() {
@@ -33,15 +33,15 @@ export default class ContactsPlugin extends Plugin {
 	}
 
 	async activateSidebarView() {
-		this.app.workspace.detachLeavesOfType(CONTACTS_VIEW_CONFIG.type);
+		this.app.workspace.detachLeavesOfType(COMPANIES_VIEW_CONFIG.type);
 
 		await this.app.workspace.getRightLeaf(false).setViewState({
-			type: CONTACTS_VIEW_CONFIG.type,
+			type: COMPANIES_VIEW_CONFIG.type,
 			active: true,
 		});
 
 		this.app.workspace.revealLeaf(
-			this.app.workspace.getLeavesOfType(CONTACTS_VIEW_CONFIG.type)[0]
+			this.app.workspace.getLeavesOfType(COMPANIES_VIEW_CONFIG.type)[0]
 		);
 	}
 }

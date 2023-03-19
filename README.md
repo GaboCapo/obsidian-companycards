@@ -1,8 +1,10 @@
-# Obsidian Contacts Plugin
-Introducing the [Obsidian](https://obsidian.md/) Contacts Plugin! With this plugin, you can easily organize and manage your contacts within [Obsidian](https://obsidian.md/). Simply create a note with contact information and use the plugin's features to quickly search, and sort through your contacts. Contacts plugin also helps you to remember birthdays of your contacts and keeps track of the last time you met them.
 
-<img width="600" alt="Obsidian Contacts plugin image" src="https://user-images.githubusercontent.com/9114994/209868806-e4d8c95e-e144-4a7f-8b8f-52f036cd2df8.png">
+⚠️ **Note: This program is currently under heavy development and may be unstable. Use at your own risk.**
 
+---
+
+# Obsidian Companycards Plugin
+Introducing the [Obsidian](https://obsidian.md/) Companycards Plugin! With this plugin, you can easily organize and manage your Company contacts within [Obsidian](https://obsidian.md/). Simply create a note with company information and use the plugin's features to quickly search, and sort through your Company contacts. Companycards plugin also helps you to remember foundings of your contacts and keeps track of the last time you met them.
 
 ## Installation
 
@@ -12,18 +14,18 @@ Introducing the [Obsidian](https://obsidian.md/) Contacts Plugin! With this plug
 1. Go to the `Settings` menu and select `Community Plugins`.
 1. In the `Community Plugins` menu, disable `Safe Mode`.
 
-#### Install and enable `Contacts` plugin:
+#### Install and enable `Companycards` plugin:
 1. From the `Community Plugins` menu, click on `Browse`.
-1. Search for the `Contacts` plugin.
+1. Search for the `Companycards` plugin.
 1. Click the `Install` button to add the plugin.
-1. In the `Community Plugins` menu, enable the `Contacts` plugin.
+1. In the `Community Plugins` menu, enable the `Companycards` plugin.
 
 ### Manual 
 1. Download `main.js`, `manifest.json`, and `styles.css` from the latest [release](https://github.com/vbeskrovnov/obsidian-contacts/releases).
 1. Create a directory `obsidian-contacts` in your Obsidian vault plugins directory: `<VaultFolder>/.obsidian/plugins/`. The final path should be `<VaultFolder>/.obsidian/plugins/obsidian-contacts`.
 1. Move the downloaded files (`main.js`, `manifest.json`, and `styles.css`) into the newly created directory.(`<VaultFolder>/.obsidian/plugins/obsidian-contacts`)
 1. Restart Obsidian app.
-1. Enable `Contacts` pugin in the `Community plugins` settings tab.
+1. Enable `Companycards` plugin in the `Community plugins` settings tab.
 
 ## Usage
 After enabling the plugin in the settings menu, you should see the contacts button appear in the left sidebar. Click it to open the Contacts view in the right sidebar.
@@ -50,7 +52,7 @@ https://user-images.githubusercontent.com/9114994/209376300-5d643e65-0f4d-41b8-b
 | Phone     | +1 555 555 5555          |
 | Telegram  | @carlj567                |
 | Linkedin  | linkedin.com/in/carlj567 |
-| Birthday  | 1966-12-06               |
+| Founding  | 1966-12-06               |
 | Last chat | 2022-12-06               |
 | Friends   | [[Bob]] [[Sue]]          |
 /---contact---/
@@ -61,7 +63,7 @@ https://user-images.githubusercontent.com/9114994/209380539-7fe10d19-5d73-4435-a
 
 ### Searching for Сontacts
 You can use different sorting options to find the required contacts:
-- Use sorting by birthday to find contacts with the nearest birthdays.
+- Use sorting by founding to find contacts with the nearest founding day.
 - Use sorting by last contact date to find contacts that you haven't talked to in a long time.
 - Use sorting by name to find a specific contact.
 
@@ -81,7 +83,7 @@ The default format used by this plugin is the markdown table for storing contact
 | Phone     | +1 555 555 5555          |
 | Telegram  | @carlj567                |
 | Linkedin  | linkedin.com/in/carlj567 |
-| Birthday  | 1966-12-06               |
+| Founding  | 1966-12-06               |
 | Last chat | 2022-12-06               |
 | Friends   | [[Bob]] [[Sue]]          |
 /---contact---/
@@ -103,7 +105,7 @@ name:
 phone: +1 555 555 5555
 telegram: @carlj567 
 linkedin: linkedin.com/in/carlj567
-birthday: 1966-12-06 
+founding: 1966-12-06 
 last_chat: 2022-12-06 
 friends: "[[Bob]] [[Sue]]"
 type: contact
