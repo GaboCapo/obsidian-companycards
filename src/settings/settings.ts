@@ -1,26 +1,60 @@
 import { App, PluginSettingTab, Setting } from "obsidian";
-import CompaniesPlugin from "src/main";
 
-export interface CompaniesPluginSettings {
-  companiesFolder: string;
-  template: Template;
-}
+
+import CompaniesPlugin from "src/main";
+import { FolderSuggest } from './suggesters/FolderSuggester';
+
 
 export enum Template {
   CUSTOM = "custom", FRONTMATTER = "frontmatter"
 }
 
+export enum DefaultFrontmatterKeyType {
+  snakeCase = 'Snake Case',
+  camelCase = 'Camel Case',
+}
+
+export interface CompaniesPluginSettings {
+  folder: string; // new file location
+  fileNameFormat: string; // new file name format
+  frontmatter: string; // frontmatter that is inserted into the file
+  content: string; // what is automatically written to the file.
+  useDefaultFrontmatter: boolean;
+  defaultFrontmatterKeyType: DefaultFrontmatterKeyType;
+  naverClientId: string;
+  naverClientSecret: string;
+  localePreference: string;
+}
+
 export const DEFAULT_SETTINGS: CompaniesPluginSettings = {
-  companiesFolder: '/',
-  template: Template.CUSTOM
+  folder: '',
+  fileNameFormat: '',
+  frontmatter: '',
+  content: '',
+  useDefaultFrontmatter: true,
+  defaultFrontmatterKeyType: DefaultFrontmatterKeyType.camelCase,
+  naverClientId: '',
+  naverClientSecret: '',
+  localePreference: 'default',
+};
+
+
+// Erweiterung der Plugin-Klasse um eine Typdefinition
+declare module "obsidian" {
+  interface Plugin {
+    settings: CompaniesPluginSettings;
+  }
 }
 
 export class CompaniesSettingTab extends PluginSettingTab {
   plugin: CompaniesPlugin;
-
   constructor(app: App, plugin: CompaniesPlugin) {
     super(app, plugin);
     this.plugin = plugin;
+  }
+
+  get settings() {
+    return this.plugin.settings;
   }
 
   display(): void {
@@ -28,29 +62,25 @@ export class CompaniesSettingTab extends PluginSettingTab {
 
     containerEl.empty();
 
-    containerEl.createEl('h2', { text: 'Settings for "Companies" plugin.' });
+    containerEl.createEl('h2', { text: 'Settings for "Companycards" plugin.' });
 
+    // New file location
     new Setting(containerEl)
       .setName('Companies folder location')
       .setDesc('Files in this folder and all subfolders will be available as companies')
-      .addText(text => text
-        .setPlaceholder('Personal/Companies')
-        .setValue(this.plugin.settings.companiesFolder)
-        .onChange(async (value) => {
-          this.plugin.settings.companiesFolder = value;
-          await this.plugin.saveSettings();
-        }));
+      .addSearch(cb => {
+        try {
+          new FolderSuggest(this.app, cb.inputEl);
+        } catch {
+          // eslint-disable
+        }
+        cb.setPlaceholder('Example: folder1/folder2')
+          .setValue(this.plugin.settings.folder)
+          .onChange(new_folder => {
+            this.plugin.settings.folder = new_folder;
+            this.plugin.saveSettings();
+          });
+      });
 
-    new Setting(containerEl)
-      .setName('Company file template')
-      .setDesc('Template to be used when creating a new company file')
-      .addDropdown(dropdown => dropdown
-        .addOption(Template.CUSTOM, "Custom")
-        .addOption(Template.FRONTMATTER, "Frontmatter (YAML Metadata)")
-        .setValue(this.plugin.settings.template)
-        .onChange(async (value) => {
-          this.plugin.settings.template = value as Template;
-          await this.plugin.saveSettings();
-        }));
   }
 }
