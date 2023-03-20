@@ -98,7 +98,7 @@ The default format used by this plugin is the markdown table for storing Compani
 | Name      | carl                     |
 | Last Name | johnson                  |
 | Phone     | +1 555 555 5555          |
-| Telegram  | @carlj567                |
+| Telegram  | "@carlj567"              |
 | Linkedin  | linkedin.com/in/carlj567 |
 | Founding  | 1966-12-06               |
 | Last chat | 2022-12-06               |
@@ -120,7 +120,7 @@ name:
   first: carl
   last: johnson
 phone: +1 555 555 5555
-telegram: @carlj567 
+telegram: "@carlj567" 
 linkedin: linkedin.com/in/carlj567
 founding: 1966-12-06 
 last_chat: 2022-12-06 
@@ -130,6 +130,80 @@ type: company
 ```
 
 
+## Upcoming Layout
+
+
+```
+---
+name:
+  first: John
+  last: Doe
+company:
+  name: ABC Inc.
+  department: Sales
+  title: Sales Manager
+address:
+  street: Main Street
+  number: 123
+  city: Berlin
+  state: Brandenburg
+  zip: 12345
+  country: Germany
+phone:
+  main: 555-1234
+  mobile: 555-5678
+  work: 555-9876
+fax:
+  main: 555-4321
+  work: 555-8765
+email:
+  main: john.doe@example.com
+  work: john.doe@abcinc.com
+internet:
+  website: www.example.com
+  blog: blog.example.com
+  social_media:
+    platform: Twitter
+      handle: johndoe
+      url: twitter.com/johndoe
+      notes: Active account
+birthday: 1970-01-01
+last_chat: 2022-03-15
+notes: Has shown interest in new product line
+categories: Sales, Management
+tags: Prospective client
+finance:
+  tax_office: Anytown Tax Office
+  vat_id: 1234567890
+  bank_accounts:
+    bank_name: XYZ Bank
+      account_number: 9876543210
+      routing_number: 123456789
+      iban: US123456789
+      bic_swift: XYZBUS12
+      notes: Primary account
+  sepa_mandates:
+    mandate_id: 1234567890
+      creation_date: 2022-01-01
+      status: Active
+      notes: Authorization received
+active: true
+monthly_revenue: 10000
+is_private_freelancer: false
+is_company: true
+legal_form: Corporation
+vat_number: 1234567890
+tax_number: 1234567890
+other_aspects: Interested in sustainability practices
+salutation:
+  formal: Mr. Doe
+  informal: John
+address_type:
+  residential: false
+  business: true
+type: company_contact
+---
+```
 
 
 ---
