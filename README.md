@@ -125,3 +125,12 @@ friends: "[[Bob]] [[Sue]]"
 type: company
 ---
 ```
+
+
+
+
+---
+
+## Acknowledgements
+
+This plugin is based on the [Obsidian Contacts Plugin](https://github.com/vbeskrovnov/obsidian-contacts) by vbeskrovnov. We would like to express our gratitude to vbeskrovnov for their hard work and contribution to the Obsidian community.
