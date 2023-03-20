@@ -25,7 +25,7 @@ export const HeaderView = (props: HeaderProps) => {
 						aria-label="Create New Company"
 						onClick={props.onCreateCompany}
 					>
-						Create
+						New Company
 					</div>
 					<div className="vl"></div>
 					<div

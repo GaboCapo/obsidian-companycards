@@ -20,6 +20,10 @@ export const CompanyView = (props: CompanyProps) => {
 				<div className="name">
 					{company.name} {company.lastName}
 				</div>
+				<div className="phone">
+					 {company.phone}
+				</div>
+				<br></br>
 				{company.lastContact && (
 					<div className="lastContact">
 						Last contact: {diffDateToday(company.lastContact)} days ago

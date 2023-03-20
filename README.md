@@ -139,7 +139,7 @@ name:
   first: John
   last: Doe
 company:
-  name: ABC Inc.
+  companyname: ABC Inc.
   department: Sales
   title: Sales Manager
 address:
