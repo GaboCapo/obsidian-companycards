@@ -205,6 +205,12 @@ type: company_contact
 ---
 ```
 
+---
+
+**Note for Commercial Use**
+
+If you plan to use the Companycard Plugin for commercial purposes, please ensure that you comply with Obsidian's licensing requirements. Check the following page for more information: https://help.obsidian.md/Licenses+%26+Payment/Commercial+license#FAQ. 
+
 
 ---
 
