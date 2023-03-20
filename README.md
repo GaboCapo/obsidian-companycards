@@ -68,6 +68,9 @@ https://user-images.githubusercontent.com/9114994/209376300-5d643e65-0f4d-41b8-b
 Feel free to add more rows, and leave existing ones empty. **Do not rename** existing keys, as they can be used by the plugin.
 
 
+To update, press the factory button on the left side again.
+
+
 TODO Video
 
 https://user-images.githubusercontent.com/9114994/209380539-7fe10d19-5d73-4435-a0de-f2c5805e0771.mov
