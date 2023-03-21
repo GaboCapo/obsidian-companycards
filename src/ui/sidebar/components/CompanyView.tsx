@@ -11,19 +11,48 @@ type CompanyProps = {
 export const CompanyView = (props: CompanyProps) => {
 	const { workspace } = useApp();
 	const company = props.company;
+	const handleCardClick = () => {
+		openFile(company.file, workspace);
+	};
+	const handleCompanyNameClick = (event: React.MouseEvent<HTMLDivElement>) => {
+		event.stopPropagation();
+		openFile(company.file, workspace);
+	};
+	const handleNameClick = (event: React.MouseEvent<HTMLDivElement>) => {
+		event.stopPropagation();
+		openFile(company.file, workspace);
+	};
+	const handleWebsiteClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+		event.preventDefault();
+		event.stopPropagation();
+		window.open(event.currentTarget.href, "_blank");
+	};
 	return (
-		<div
-			className="company-card"
-			onClick={() => openFile(company.file, workspace)}
-		>
+		<div className="company-card" onClick={handleCardClick}>
 			<div className="content">
-				<div className="name">
+				<div className="companyname" onClick={handleCompanyNameClick}>
+					 {company.companyname}
+				</div>
+				<div className="department">
+					 {company.department}
+				</div>
+				<div className="title">
+					 {company.title}
+				</div>
+				<div className="name" onClick={handleNameClick}>
 					{company.name} {company.lastName}
 				</div>
 				<div className="phone">
 					 {company.phone}
 				</div>
-				<br></br>
+				{company.website && (
+					<div className="website">
+						<a href={company.website} target="_blank" rel="noopener noreferrer" className="external-link" onClick={handleWebsiteClick}>{company.website}</a>
+					</div>
+				)}
+				<div className="emailmain">
+					{company.emailmain}
+				</div>
 				{company.lastContact && (
 					<div className="lastContact">
 						Last contact: {diffDateToday(company.lastContact)} days ago

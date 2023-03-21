@@ -22,7 +22,7 @@ export const CompaniesListView = (props: CompaniesListProps) => {
 		const sortedCompanies = [...companies].sort((a, b) => {
 			switch (sort) {
 				case Sort.NAME:
-					return (a.name + a.lastName).localeCompare(b.name + b.lastName);
+					return a.companyname.localeCompare(b.companyname);
 				case Sort.LAST_CONTACT:
 					return compareDatesOrUndefined(a.lastContact, b.lastContact);
 				case Sort.FOUNDING:
@@ -31,6 +31,7 @@ export const CompaniesListView = (props: CompaniesListProps) => {
 					return 0;
 			}
 		});
+		
 		setProcessedCompanies(sortedCompanies);
 	}, [companies, sort]);
 

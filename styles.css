@@ -26,3 +26,37 @@
 .workspace-leaf-content[data-type='companies-view'] .view-content {
   padding-top: 0;
 }
+
+
+.companyname {
+  font-weight: 600;
+}
+
+.title {
+  font-size: 0.9em;
+}
+
+.phone {
+  font-size: medium;
+}
+
+
+.department {
+  display: inline-block;
+  background-color: #494e49;
+  color: #fff;
+  border-radius: 30px;
+  padding: 7px 7px;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  float: right;
+  margin: 10px 0 0 0;
+}
+
+.emailmain {
+  color: #fbfbfb;
+  font-weight: 600;
+  margin: 2px;
+}

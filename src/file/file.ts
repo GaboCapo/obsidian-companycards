@@ -4,16 +4,20 @@ import { Template } from "src/settings/settings";
 
 const customFormat =
   `/---company---/
-| key       | value |
-| --------- | ----- |
-| Name      |       |
-| Last Name |       |
-| Phone     |       |
-| Telegram  |       |
-| Linkedin  |       |
-| Founding  |       |
-| Last chat |       |
-| Friends   |       |
+| key         | value |
+| ---------   | ----- |
+| Name        |       |
+| Last Name   |       |
+| Phone       |       |
+| website     |       |
+| emailmain   |       |
+| Company Name|       |
+| title       |       |
+| Telegram    |       |
+| Linkedin    |       |
+| Founding    |       |
+| Last chat   |       |
+| Friends     |       |
 /---company---/`
 
 const frontmatterFormat =
@@ -21,7 +25,11 @@ const frontmatterFormat =
 name:
   first:
   last:
+companyname:
+title:
 phone:
+website:
+emailmain:
 telegram:
 linkedin:
 founding:

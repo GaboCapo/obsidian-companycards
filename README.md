@@ -81,6 +81,8 @@ You can use different sorting options to find the required companies:
 - Use sorting by last contact date to find companies that you haven't talked to in a long time.
 - Use sorting by name to find a specific company.
 
+Note: Sorting by company name in the company list only works if all entries have a value for the companyname field in the YAML front matter. If any entry is missing this field, the sorting may not work correctly.
+
 
 TODO Video
 
@@ -119,6 +121,9 @@ The [Frontmatter](https://help.obsidian.md/Advanced+topics/YAML+front+matter) fo
 name:
   first: carl
   last: johnson
+companyname: ABC Inc  
+department: Sales
+title: Sales Manager    
 phone: +1 555 555 5555
 telegram: "@carlj567" 
 linkedin: linkedin.com/in/carlj567
@@ -133,15 +138,43 @@ type: company
 ## Upcoming Layout
 
 
+
+
+## Working Layout 
+
+```
+
+---
+name:
+  first: carl
+  last: johnson
+companyname: ABC Inc  
+department: Sales
+title: Sales Manager  
+phone: +1 555 555 5555
+website: https://www.example.com
+emailmain: john.doe@example.com
+telegram: sds@carlj567 
+linkedin: linkedin.com/in/carlj567
+founding: 1966-12-06 
+last_chat: 2022-12-06 
+friends: "[[Bob]] [[Sue]]"
+type: company
+---
+
+```
+
+
+## Test Layout 
+
 ```
 ---
 name:
   first: John
   last: Doe
-company:
-  companyname: ABC Inc.
-  department: Sales
-  title: Sales Manager
+companyname: ABC Inc  
+department: Sales
+title: Sales Manager  
 address:
   street: Main Street
   number: 123
@@ -160,7 +193,7 @@ email:
   main: john.doe@example.com
   work: john.doe@abcinc.com
 internet:
-  website: www.example.com
+  website: www.obsidian.md
   blog: blog.example.com
   social_media:
     platform: Twitter
