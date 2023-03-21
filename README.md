@@ -21,9 +21,9 @@ With the Companycards plugin for [Obsidian](https://obsidian.md/), you can easil
 ~~1. In the `Community Plugins` menu, enable the `Companycards` plugin.~~
 
 ### Manual 
-1. Download `main.js`, `manifest.json`, and `styles.css` from the latest [release](https://github.com/vbeskrovnov/obsidian-contacts/releases).
-1. Create a directory `obsidian-contacts` in your Obsidian vault plugins directory: `<VaultFolder>/.obsidian/plugins/`. The final path should be `<VaultFolder>/.obsidian/plugins/obsidian-contacts`.
-1. Move the downloaded files (`main.js`, `manifest.json`, and `styles.css`) into the newly created directory.(`<VaultFolder>/.obsidian/plugins/obsidian-contacts`)
+1. Download `main.js`, `manifest.json`, and `styles.css` from the latest [release](https://github.com/GaboCapo/obsidian-companycards/releases).
+1. Create a directory `obsidian-companycards` in your Obsidian vault plugins directory: `<VaultFolder>/.obsidian/plugins/`. The final path should be `<VaultFolder>/.obsidian/plugins/obsidian-companycards`.
+1. Move the downloaded files (`main.js`, `manifest.json`, and `styles.css`) into the newly created directory.(`<VaultFolder>/.obsidian/plugins/obsidian-companycards`)
 1. Restart Obsidian app.
 1. Enable `Companycards` plugin in the `Community plugins` settings tab.
 
