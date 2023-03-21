@@ -1,6 +1,6 @@
 {
 	"name": "obsidian-companycards",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"description": "Allows you to manage and organize your Company contacts.",
 	"main": "main.js",
 	"scripts": {

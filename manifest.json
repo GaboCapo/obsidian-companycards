@@ -1,7 +1,7 @@
 {
 	"id": "obsidian-companycards",
 	"name": "Companycards",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"minAppVersion": "0.15.0",
 	"description": "Allows you to manage and organize your Company contacts.",
 	"author": "GaboCapo",

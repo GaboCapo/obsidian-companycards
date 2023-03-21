@@ -15,7 +15,7 @@ export enum DefaultFrontmatterKeyType {
 }
 
 export interface CompaniesPluginSettings {
-  folder: string; // new file location
+  companiesFolder: string; // new file location
   fileNameFormat: string; // new file name format
   frontmatter: string; // frontmatter that is inserted into the file
   content: string; // what is automatically written to the file.
@@ -24,10 +24,11 @@ export interface CompaniesPluginSettings {
   naverClientId: string;
   naverClientSecret: string;
   localePreference: string;
+  template: Template;
 }
 
 export const DEFAULT_SETTINGS: CompaniesPluginSettings = {
-  folder: '',
+  companiesFolder: '',
   fileNameFormat: '',
   frontmatter: '',
   content: '',
@@ -36,15 +37,9 @@ export const DEFAULT_SETTINGS: CompaniesPluginSettings = {
   naverClientId: '',
   naverClientSecret: '',
   localePreference: 'default',
+  template: Template.CUSTOM
 };
 
-
-// Erweiterung der Plugin-Klasse um eine Typdefinition
-declare module "obsidian" {
-  interface Plugin {
-    settings: CompaniesPluginSettings;
-  }
-}
 
 export class CompaniesSettingTab extends PluginSettingTab {
   plugin: CompaniesPlugin;
@@ -75,12 +70,24 @@ export class CompaniesSettingTab extends PluginSettingTab {
           // eslint-disable
         }
         cb.setPlaceholder('Example: folder1/folder2')
-          .setValue(this.plugin.settings.folder)
+          .setValue(this.plugin.settings.companiesFolder)
           .onChange(new_folder => {
-            this.plugin.settings.folder = new_folder;
+            this.plugin.settings.companiesFolder = new_folder;
             this.plugin.saveSettings();
           });
       });
+
+    new Setting(containerEl)
+      .setName('Company file template')
+      .setDesc('Template to be used when creating a new contact file')
+      .addDropdown(dropdown => dropdown
+        .addOption(Template.CUSTOM, "Custom")
+        .addOption(Template.FRONTMATTER, "Frontmatter (YAML Metadata)")
+        .setValue(this.plugin.settings.template)
+        .onChange(async (value) => {
+          this.plugin.settings.template = value as Template;
+          await this.plugin.saveSettings();
+        }));
 
   }
 }

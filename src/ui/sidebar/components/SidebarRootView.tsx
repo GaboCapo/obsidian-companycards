@@ -18,7 +18,7 @@ export const SidebarRootView = (props: RootProps) => {
 	const [companies, setCompanies] = React.useState<Company[]>([]);
 	const [sort, setSort] = React.useState<Sort>(Sort.LAST_CONTACT);
 	const folder = props.plugin.settings.companiesFolder;
-
+	
 	React.useEffect(() => {
 		const companiesFolder = vault.getAbstractFileByPath(
 			normalizePath(folder)
